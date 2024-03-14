@@ -24,7 +24,6 @@
                                 <h2 class="header">Jetzt registrieren</h2>
                                 <div>
                                     <form autocomplete="off" id="supplier_registration_form" action="{{$action_url}}" method="post" target="_blank">
-                                        {{-- @csrf --}}
 
                                         <input type="hidden" class="supplier_reg_form_data" name="_token" value="{{csrf_token()}}">
                                         <input type="hidden" id="user_referred_by_id" class="supplier_reg_form_data" name="user_referred_by" value="">
@@ -65,7 +64,7 @@
                                         <div class="supplier-widgets-twoInputFiled">
                                             <div class="supplier-widgets-form-group supplier-widgets-pr-5">
                                                 <label class="supplier-widgets-input-label" for="billing_city">City <span class="supplier-widgets-text-danger">*</span></label>
-                                                <input type="text" id="billing_city" class="supplier_reg_form_data" name="city" placeholder="Type your City" required value="{{old('city')}}">
+                                                <input type="text" id="billing_city" class="supplier_reg_form_data" name="city" placeholder="Type your City" required value="">
                                             </div>
                                             <div class="supplier-widgets-form-group supplier-widgets-pl-5">
                                                 <label class="supplier-widgets-input-label" for="billing_zip">Zip <span class="supplier-widgets-text-danger">*</span></label>
@@ -636,9 +635,6 @@
                 formData.append(form_element[i].name, form_element[i].value);
             }
 
-            {{-- for(let [name, value] of formData) {
-                console.log(`${name} = ${value}`);
-            } --}}
             e.target.disabled = true;
 
             // Creating Our XMLHttpRequest object
