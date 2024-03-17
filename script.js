@@ -6,11 +6,7 @@
             supplier_registration_widgets_init();
             supplier_registration_widgets_setStyles(styles);
             supplier_country_list();
-            set_url_param_to_form_field();
-            supplier_registration_checked_checkbox();
-            supplier_registration_form_submit();
-            
-            supplier_registration_widgets_agb_and_policy_display();
+            notificationTab();
         }
     });
 
@@ -412,151 +408,132 @@
         var xhr = new XMLHttpRequest();
     
         // Making our connection  
-        let url = '{{url("api/supplier-country-list")}}';
+        let url = '';
         xhr.open("GET", url, true);
     
         // function execute after request is successful 
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
+        // xhr.onreadystatechange = function () {
+        //     if (this.readyState == 4) {
 
-                if(this.status == 200){
-                    let country_list = JSON.parse(this.responseText).data;
+        //         if(this.status == 200){
+        //             let country_list = JSON.parse(this.responseText).data;
     
-                    if(country_list != ''){
-                        document.getElementById('billing_country_id').innerHTML = country_list;
-                    }
-                }else if(this.status == 400){
-                    let message = JSON.parse(this.responseText).data;
-                    console.log(message);
-                }
+        //             if(country_list != ''){
+        //                 document.getElementById('billing_country_id').innerHTML = country_list;
+        //             }
+        //         }else if(this.status == 400){
+        //             let message = JSON.parse(this.responseText).data;
+        //             console.log(message);
+        //         }
 
-            }
-        }
+        //     }
+        // }
         
         // Sending our request 
-        xhr.send();
+        // xhr.send();
 
-    }
-
-    function supplier_registration_checked_checkbox() {
-        var reg_submit_btn = document.getElementById('supplier_registration_submit_btn');
-
-        var checkbox_element1 = document.getElementById('supplier_registration_agree_checkbox1');
-        var checkbox_element2 = document.getElementById('supplier_registration_agree_checkbox2');
-        var checkbox_element3 = document.getElementById('supplier_registration_agree_checkbox3');
-        
-        checkbox_element1.onchange = function(event){
-            var checkbox1 = event.target;
-
-            if (checkbox1.checked && checkbox_element2.checked && checkbox_element3.checked) {
-                reg_submit_btn.removeAttribute('disabled');
-                reg_submit_btn.style.cursor = 'pointer';
-            } else {
-                reg_submit_btn.setAttribute("disabled", "disabled");
-                reg_submit_btn.removeAttribute('style');
-            }
-        };
-
-        checkbox_element2.onchange = function(event){
-            var checkbox2 = event.target;
-
-            if (checkbox_element1.checked && checkbox2.checked && checkbox_element3.checked) {
-                reg_submit_btn.removeAttribute('disabled');
-                reg_submit_btn.style.cursor = 'pointer';
-            } else {
-                reg_submit_btn.setAttribute("disabled", "disabled");
-                reg_submit_btn.removeAttribute('style');
-            }
-        };
-
-        checkbox_element3.onchange = function(event){
-            var checkbox3 = event.target;
-
-            if (checkbox_element1.checked && checkbox_element2.checked && checkbox3.checked) {
-                reg_submit_btn.removeAttribute('disabled');
-                reg_submit_btn.style.cursor = 'pointer';
-            } else {
-                reg_submit_btn.setAttribute("disabled", "disabled");
-                reg_submit_btn.removeAttribute('style');
-            }
-        };
     }
 
     function supplier_registration_form_submit(){
 
-        let supplier_reg_form = document.getElementById('supplier_registration_form');
-        let supplier_reg_submit_btn = document.getElementById('supplier_registration_submit_btn');
+        // let supplier_reg_form = document.getElementById('supplier_registration_form');
+        // let supplier_reg_submit_btn = document.getElementById('supplier_registration_submit_btn');
         
-        supplier_reg_submit_btn.onclick = function(e){
-            e.preventDefault();
+        // supplier_reg_submit_btn.onclick = function(e){
+        //     e.preventDefault();
 
-            let error_show_div = document.getElementById('supplier_form_validation');
-            error_show_div.innerHTML = '';
-            error_show_div.removeAttribute('style');
+        //     let error_show_div = document.getElementById('supplier_form_validation');
+        //     error_show_div.innerHTML = '';
+        //     error_show_div.removeAttribute('style');
 
-            var form_element = document.getElementsByClassName('supplier_reg_form_data');
+        //     var form_element = document.getElementsByClassName('supplier_reg_form_data');
 
-            var formData = new FormData();
+        //     var formData = new FormData();
 
-            for(var i = 0; i < form_element.length; i++)
-            {
-                formData.append(form_element[i].name, form_element[i].value);
-            }
+        //     for(var i = 0; i < form_element.length; i++)
+        //     {
+        //         formData.append(form_element[i].name, form_element[i].value);
+        //     }
 
-            e.target.disabled = true;
+        //     e.target.disabled = true;
 
-            // Creating Our XMLHttpRequest object
-            var xhr = new XMLHttpRequest();
+        //     // Creating Our XMLHttpRequest object
+        //     var xhr = new XMLHttpRequest();
         
-            // Making our connection
-            var url = supplier_reg_form.getAttribute('action');
-            xhr.open("POST", url, true);
+        //     // Making our connection
+        //     var url = supplier_reg_form.getAttribute('action');
+        //     xhr.open("POST", url, true);
 
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            // Sending our request 
-            xhr.send(formData);
+        //     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        //     // Sending our request 
+        //     xhr.send(formData);
 
-            // function execute after request is successful 
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4) {
+        //     // function execute after request is successful 
+        //     xhr.onreadystatechange = function () {
+        //         if (this.readyState == 4) {
 
-                    if(this.status == 200){
+        //             if(this.status == 200){
 
-                        e.target.disabled = false;
+        //                 e.target.disabled = false;
 
-                        let redirect_url = JSON.parse(this.responseText).redirect_url;
+        //                 let redirect_url = JSON.parse(this.responseText).redirect_url;
 
-                        window.open(redirect_url, "_blank");
+        //                 window.open(redirect_url, "_blank");
                         
-                    }else if(this.status == 422){
+        //             }else if(this.status == 422){
 
-                        e.target.disabled = false;
+        //                 e.target.disabled = false;
 
-                        let error_show = '';
+        //                 let error_show = '';
 
-                        let error_list = JSON.parse(this.responseText).error_list;
+        //                 let error_list = JSON.parse(this.responseText).error_list;
 
-                        if(error_list.length > 0){
-                            error_list.forEach(function (value, index){
-                                error_show += value + "<br>";
-                            });
-                        }
+        //                 if(error_list.length > 0){
+        //                     error_list.forEach(function (value, index){
+        //                         error_show += value + "<br>";
+        //                     });
+        //                 }
 
-                        if(error_show != ''){
-                            let error_show_div = document.getElementById('supplier_form_validation');
-                            error_show_div.innerHTML = error_show;
+        //                 if(error_show != ''){
+        //                     let error_show_div = document.getElementById('supplier_form_validation');
+        //                     error_show_div.innerHTML = error_show;
 
-                            error_show_div.style.backgroundColor = 'red';
-                            error_show_div.style.color = 'white';
-                            error_show_div.style.padding = '10px';
-                            error_show_div.style.fontSize = '14px';
-                            error_show_div.style.fontFamily = 'Helvetica Neue",Helvetica,Arial,sans-serif !important';
-                        }
-                    }
+        //                     error_show_div.style.backgroundColor = 'red';
+        //                     error_show_div.style.color = 'white';
+        //                     error_show_div.style.padding = '10px';
+        //                     error_show_div.style.fontSize = '14px';
+        //                     error_show_div.style.fontFamily = 'Helvetica Neue",Helvetica,Arial,sans-serif !important';
+        //                 }
+        //             }
 
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
+    }
+
+    function notificationTab(){
+        var tabLinks = document.querySelectorAll('.ll-notified-tab-link');
+
+        tabLinks.forEach(function (tabLink) {
+            tabLink.addEventListener('click', function () {
+                var tabID = this.getAttribute('data-tab');
+
+                tabLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+
+                this.classList.add('active');
+                var tabContent = document.getElementById('tab-' + tabID);
+
+                var allTabContents = document.querySelectorAll('.ll-notified-tab-content');
+
+                allTabContents.forEach(function (content) {
+                    content.classList.remove('active');
+                });
+
+                tabContent.classList.add('active');
+            });
+        });
     }
 
 })();
