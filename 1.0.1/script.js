@@ -3,188 +3,186 @@
 
     document.addEventListener("DOMContentLoaded", function(event) {
         if(document.getElementById('notification_luminous_labs')){
-            supplier_registration_widgets_init();
-            supplier_registration_widgets_setStyles(styles);
+            ll_notification_widgets_init();
+            ll_notification_widgets_setStyles(styles);
             supplier_country_list();
-            notificationTab();
         }
     });
 
-    function supplier_registration_widgets_init(){
+    function ll_notification_widgets_init(){
         let mainDiv = document.getElementById('notification_luminous_labs');
     
-        $supplier_embed_form = `
-                            <div class="ll-notified-wrapper">
-
-                                <div class="ll-notified-tab-wrapper">
-                                    <ul class="ll-notified-tabs">
-                                        <li class="ll-notified-tab-link active" data-tab="1">Email</li>
-                                        <li class="ll-notified-tab-link" data-tab="2">WhatsApp</li>
-                                    </ul>
-                                </div>
-
-                                <div class="ll-notified-content-wrapper">
-
-                                    <div id="tab-1" class="ll-notified-tab-content active">
-                                        <form action="#">
-                                            <div class="ll-notified-chatbot-parent">
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="template">Template</label>
-
-                                                    <div class="ll-notified-inner-chatbot-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                        <span class="ll-notified-chatbot-add-icon">+</span>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="atendees">Atendees</label>
-                                                    <div class="ll-notified-chatbot-select-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="nonatendees">Non Atendees</label>
-                                                    <div class="ll-notified-chatbot-select-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="registered">Registered</label>
-                                                    <div class="ll-notified-chatbot-select-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="list">List</label>
-                                                    <div class="ll-notified-inner-chatbot-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                        <span class="ll-notified-chatbot-add-icon">+</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ll-notified-chatbot-radio-button-parent">
-                                                <div class="ll-notified-chatbot-radio-item">
-                                                    <input type="radio" id="sand_now" name="sand_schedule" value="sand_now" checked>
-                                                    <label for="sand_now">Sand Now</label>
-                                                </div>
-                                                <div class="ll-notified-chatbot-radio-item">
-                                                    <input type="radio" id="schedule" name="sand_schedule" value="schedule">
-                                                    <label for="schedule">Schedule</label>
-                                                </div>
-
-
-                                            </div>
-                                            <div class="ll-notified-chatbot-test-inputfelid">
-                                                <button class="ll-notified-chatbot-form-text">Test</button>
-                                                <input type="email" placeholder="test@gmail.com" required>
-                                            </div>
-                                            <button class="ll-notified-chatbot-form-sand">Sand</button>
-                                        </form>
-                                    </div>
-
-                                    <div id="tab-2" class="ll-notified-tab-content">
-                                        <form action="#">
-                                            <div class="ll-notified-chatbot-parent">
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="template">Template</label>
-                                                    <div class="ll-notified-inner-chatbot-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                        <span class="ll-notified-chatbot-add-icon">+</span>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="atendees">Atendees</label>
-                                                    <div class="ll-notified-chatbot-select-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="nonatendees">Non Atendees</label>
-                                                    <div class="ll-notified-chatbot-select-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="registered">Registered</label>
-                                                    <div class="ll-notified-chatbot-select-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="ll-notified-email-tabs-select">
-                                                    <label for="list">List</label>
-                                                    <div class="ll-notified-inner-chatbot-parent">
-                                                        <select id="template" name="template">
-                                                            <option value="boots">Boots</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="yuva">Yuva</option>
-                                                        </select>
-                                                        <span class="ll-notified-chatbot-add-icon">+</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ll-notified-chatbot-radio-button-parent">
-                                                <div class="ll-notified-chatbot-radio-item">
-                                                    <input type="radio" id="sand_now" name="sand_schedule" value="sand_now" checked>
-                                                    <label for="sand_now">Sand Now</label>
-                                                </div>
-                                                <div class="ll-notified-chatbot-radio-item">
-                                                    <input type="radio" id="schedule" name="sand_schedule" value="schedule">
-                                                    <label for="schedule">Schedule</label>
-                                                </div>
-
-
-                                            </div>
-                                            <div class="ll-notified-chatbot-test-inputfelid">
-                                                <button class="ll-notified-chatbot-form-text">Test</button>
-                                                <input type="number" placeholder="0987654" required>
-                                            </div>
-                                            <button class="ll-notified-chatbot-form-sand">Sand</button>
-                                        </form>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        `;
-
-        mainDiv.innerHTML = $supplier_embed_form;
+        let notification_type = getScriptAttributeValue('notify_type');
+        console.log(notification_type);
+        if(notification_type != ''){
+            if(notification_type == 'whatsapp'){
+                mainDiv.innerHTML = whatsapp_form;
+            }else if(notification_type == 'email'){
+                mainDiv.innerHTML = email_form;
+            }
+        }
     }
+
+    const whatsapp_form = `
+        <div class="ll-notified-wrapper">
+            <div class="ll-notified-content-wrapper">
+                <form action="#">
+                    <div class="ll-notified-chatbot-parent">
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="template">Template</label>
+
+                            <div class="ll-notified-inner-chatbot-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                                <span class="ll-notified-chatbot-add-icon">+</span>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="atendees">Atendees</label>
+                            <div class="ll-notified-chatbot-select-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="nonatendees">Non Atendees</label>
+                            <div class="ll-notified-chatbot-select-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="registered">Registered</label>
+                            <div class="ll-notified-chatbot-select-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="list">List</label>
+                            <div class="ll-notified-inner-chatbot-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                                <span class="ll-notified-chatbot-add-icon">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ll-notified-chatbot-radio-button-parent">
+                        <div class="ll-notified-chatbot-radio-item">
+                            <input type="radio" id="sand_now" name="sand_schedule" value="sand_now" checked>
+                            <label for="sand_now">Sand Now</label>
+                        </div>
+                        <div class="ll-notified-chatbot-radio-item">
+                            <input type="radio" id="schedule" name="sand_schedule" value="schedule">
+                            <label for="schedule">Schedule</label>
+                        </div>
+
+
+                    </div>
+                    <div class="ll-notified-chatbot-test-inputfelid">
+                        <button class="ll-notified-chatbot-form-text">Test</button>
+                        <input type="email" placeholder="test@gmail.com" required>
+                    </div>
+                    <button class="ll-notified-chatbot-form-sand">Sand</button>
+                </form>
+            </div>
+        </div>
+    `;
+
+    const email_form = `
+        <div class="ll-notified-wrapper">
+            <div class="ll-notified-content-wrapper">
+                <form action="#">
+                    <div class="ll-notified-chatbot-parent">
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="template">Template</label>
+                            <div class="ll-notified-inner-chatbot-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                                <span class="ll-notified-chatbot-add-icon">+</span>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="atendees">Atendees</label>
+                            <div class="ll-notified-chatbot-select-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="nonatendees">Non Atendees</label>
+                            <div class="ll-notified-chatbot-select-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="registered">Registered</label>
+                            <div class="ll-notified-chatbot-select-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ll-notified-email-tabs-select">
+                            <label for="list">List</label>
+                            <div class="ll-notified-inner-chatbot-parent">
+                                <select id="template" name="template">
+                                    <option value="boots">Boots</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="yuva">Yuva</option>
+                                </select>
+                                <span class="ll-notified-chatbot-add-icon">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ll-notified-chatbot-radio-button-parent">
+                        <div class="ll-notified-chatbot-radio-item">
+                            <input type="radio" id="sand_now" name="sand_schedule" value="sand_now" checked>
+                            <label for="sand_now">Sand Now</label>
+                        </div>
+                        <div class="ll-notified-chatbot-radio-item">
+                            <input type="radio" id="schedule" name="sand_schedule" value="schedule">
+                            <label for="schedule">Schedule</label>
+                        </div>
+
+
+                    </div>
+                    <div class="ll-notified-chatbot-test-inputfelid">
+                        <button class="ll-notified-chatbot-form-text">Test</button>
+                        <input type="number" placeholder="0987654" required>
+                    </div>
+                    <button class="ll-notified-chatbot-form-sand">Sand</button>
+                </form>
+            </div>
+        </div>
+    `;
 
     const styles = `
         .ll-notified-wrapper {
@@ -394,7 +392,7 @@
         }
     `;
     
-    function supplier_registration_widgets_setStyles(addStyle) {
+    function ll_notification_widgets_setStyles(addStyle) {
         const styleElement = document.createElement('style');
         
         styleElement.innerHTML = addStyle;
@@ -511,29 +509,10 @@
         // }
     }
 
-    function notificationTab(){
-        var tabLinks = document.querySelectorAll('.ll-notified-tab-link');
-
-        tabLinks.forEach(function (tabLink) {
-            tabLink.addEventListener('click', function () {
-                var tabID = this.getAttribute('data-tab');
-
-                tabLinks.forEach(function (link) {
-                    link.classList.remove('active');
-                });
-
-                this.classList.add('active');
-                var tabContent = document.getElementById('tab-' + tabID);
-
-                var allTabContents = document.querySelectorAll('.ll-notified-tab-content');
-
-                allTabContents.forEach(function (content) {
-                    content.classList.remove('active');
-                });
-
-                tabContent.classList.add('active');
-            });
-        });
+    function getScriptAttributeValue(attr_name)
+    {
+        let element = document.getElementById('ll_notify_script');
+        return element.dataset[attr_name] ?? '';
     }
 
 })();
