@@ -1,5 +1,6 @@
 import { whatsapp_form } from "./forms/whatsapp.js";
 import { email_form } from "./forms/email.js";
+import { styles } from "./notify_css.js";
 
 (function(){
     
@@ -15,7 +16,7 @@ import { email_form } from "./forms/email.js";
         let mainDiv = document.getElementById('notification_luminous_labs');
     
         let notification_type = getScriptAttributeValue('notify_type');
-        console.log(notification_type);
+        
         if(notification_type != ''){
             if(notification_type == 'whatsapp'){
                 mainDiv.innerHTML = whatsapp_form;
@@ -25,7 +26,7 @@ import { email_form } from "./forms/email.js";
         }
     }
 
-    const styles = `
+    const dummy = `
         .ll-notified-wrapper {
             max-width: 600px;
             margin: auto;
@@ -231,6 +232,223 @@ import { email_form } from "./forms/email.js";
                 transform: none;
             }
         }
+
+        /* Modal CSS START*/
+        .ll_notify_modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 999; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        /* Modal Content */
+        .ll_notify_modal_content {
+            position: relative;
+            bottom: 70px;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 30%;
+            height: 57%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: ll_notify_animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: ll_notify_animatetop;
+            animation-duration: 0.4s;
+        }
+        
+        @media screen and (max-width: 1600px) and (min-width: 900px){
+            .ll_notify_modal_content {
+                width: 45%;
+            }
+        }
+        
+        @media screen and (max-width: 899px) and (min-width: 400px){
+            .ll_notify_modal_content {
+                width: 60%;
+            }
+        }
+        
+        /* Add Animation */
+        @-webkit-keyframes ll_notify_animatetop {
+            from {top:-300px; opacity:0} 
+            to {top:0; opacity:1}
+        }
+        
+        @keyframes ll_notify_animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+        
+        .ll_notify_modal_close:hover,
+        .ll_notify_modal_close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .ll_notify_modal_header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 1rem 1rem;
+            border-bottom: 1px solid #dee2e6;
+            background-color: #4baaff;
+            color: #fff;
+        }
+        
+        .ll_notify_modal_body {
+            padding: 2px 16px;
+            height: 86%;
+            overflow: auto;
+        }
+
+        .ll_notify_modal_footer{
+            padding: 1.5rem 1.5rem;
+            background-color: #4baaff;
+            color: #fff;
+        }
+
+        .ll_notify_modal_body a {
+            text-decoration: none;
+            color: #4baaff;
+        }
+
+        .ll_notify_modal_body a:hover {
+            color: #4baaff;
+        }
+        /* Modal CSS END */
+
+        /* Templace Start */
+        label.ll-template-name-felid {
+            position: relative;
+        }
+    
+        label.ll-template-name-felid input {
+            padding: 13px 15px;
+            border-radius: 8px;
+            border: 2px solid #e0a315;
+            outline: 0;
+            width: 100%;
+            max-width: 465px;
+        }
+    
+        span.ll-template-name-placeholder {
+            position: absolute;
+            top: -21px;
+            left: 10px;
+            color: #000;
+            font-size: 0.85rem;
+            padding-right: 0.33rem;
+            padding-left: 0.33rem;
+            background: #fff;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: sans-serif;
+            text-transform: capitalize;
+        }
+    
+    
+        .ll-template-ui-form-input-container {
+            position: relative;
+            font-size: 1rem;
+            display: block;
+            margin-top: 50px;
+        }
+    
+        .ll-template-ui-form-input {
+            padding: 13px 15px;
+            border-radius: 8px;
+            border: 2px solid #e0a315;
+            outline: 0;
+            width: 100%;
+            max-width: 465px;
+        }
+    
+        .ll-template-form-input-label {
+            position: absolute;
+            top: -7px;
+            left: 10px;
+            color: #000;
+            font-size: 0.85rem;
+            padding-right: 0.33rem;
+            padding-left: 0.33rem;
+            background: #fff;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: sans-serif;
+            text-transform: capitalize;
+        }
+    
+        .ll-template-new-system {
+            padding: 40px 20px;
+            /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            padding-top: 50px;
+        }
+    
+        button.ll-template-page-close {
+            color: #585656;
+            padding: 10px 20px;
+            background-color: rgb(218, 214, 221);
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    
+        button.ll-template-save {
+            color: white;
+            padding: 10px 20px;
+            background-color: #0086e6;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    
+        .ll-template-button {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 8px;
+        }
+    
+        p.ll-template-allowed-notification {
+            font-size: 12px;
+            margin: 0;
+            padding-top: 6px;
+            font-family: sans-serif;
+            color: rgb(85 85 99);
+        }
+    
+        .ll-template-select-box {
+            width: 100%;
+            max-width: 150px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            background-color: transparent;
+            border-radius: 6px;
+            outline: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    
+        .ll-template-select-box option {
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        /* Templace Start END */
     `;
     
     function ll_notification_widgets_setStyles(addStyle) {
