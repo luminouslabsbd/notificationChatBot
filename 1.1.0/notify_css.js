@@ -95,7 +95,8 @@ const styles = `
         border: 1px solid #ddd;
         background-color: transparent;
         font-size: 12px;
-        width: 300px;
+        width: 100%;
+        max-width: 300px;
         outline: none;
         border-radius: 6px;
         color: #565050;
@@ -170,7 +171,7 @@ const styles = `
         border-radius: 22px;
         border: none;
         cursor: pointer;
-        height:30px;
+        height: 30px;
     }
 
     .ll-notified-chatbot-test-inputfelid {
@@ -186,7 +187,9 @@ const styles = `
         gap: 5px;
         background-color: #d0d0d02b;
         padding: 5px 10px;
+        width: 100%;
         border-radius: 10px;
+        max-width: 340px;
     }
 
     .ll-notified-chatbot-select-parent {
@@ -196,6 +199,49 @@ const styles = `
         background-color: #d0d0d02b;
         padding: 5px 10px;
         border-radius: 10px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    @media screen and (max-width: 767px) {
+        .ll-notified-email-tabs-select {
+            flex-direction: column;
+            align-items: baseline;
+            gap: 2px;
+        }
+
+        .ll-notified-chatbot-parent {
+            gap: 10px;
+        }
+
+        .ll-notified-chatbot-test-inputfelid {
+            justify-content: start;
+            margin-bottom: 14px;
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        .ll-notified-chatbot-test-inputfelid {
+            flex-direction: column;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .ll-notified-tabs {
+            gap: 0px;
+        }
+
+        .ll-notified-tab-link {
+            padding: 6px 27px;
+        }
+
+        .ll-notified-chatbot-form-text {
+            font-size: 17px;
+        }
+
+        .ll-notified-chatbot-form-sand {
+            font-size: 17px;
+        }
     }
 
     @keyframes ll-fadeIn {
@@ -419,6 +465,20 @@ const styles = `
     .ll-template-select-box option {
         background-color: #f8f9fa;
         color: #212529;
+    }
+
+    @media screen and (max-width: 767px) {
+        label.ll-template-name-felid {
+            display: flex;
+        }
+
+        span.ll-template-name-placeholder {
+            top: -6px;
+        }
+
+        .ll-template-ui-form-input-container {
+            display: flex;
+        }
     }
     /* Templace Start END */
 `;
