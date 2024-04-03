@@ -1,5 +1,5 @@
 import {createModal, showModal, closeModal} from "../modals/modal.js";
-import {whatsapp_template} from "./whatsapp_template.js";
+import {whatsapp_template, setTemplateTextField,template_submit} from "./whatsapp_template.js";
 
 const whatsapp_form = `
     <div class="ll-notified-wrapper">
@@ -72,10 +72,16 @@ const whatsapp_form = `
 `;
 
 window.onload = (function() {
-    createModal();
-    createTemplate();
-    closeModal();
+    
 });
+
+document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+        createModal();
+        createTemplate();
+        closeModal();
+    }
+}
 
 function createTemplate(){
     var create_button = document.getElementById('whatsapp_template_add');
@@ -86,6 +92,11 @@ function createTemplate(){
 
         getTemplate();
         showModal();
+
+        /* During template form bind to modal, template related function will call here */
+        setTemplateTextField();
+        template_submit();
+        /* During template form bind to modal, template related function will call here End*/
     }
 }
 
