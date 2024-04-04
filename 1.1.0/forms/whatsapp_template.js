@@ -1,10 +1,12 @@
+import {FormValidate} from "./form_validate.js";
+
 const whatsapp_template = `
     <form action="https://jsonplaceholder.typicode.com/posts" method="POST" id="ll_whatsapp_template">
         <div class="ll-template-new-system">
             <input type="hidden" class="ll_template_form_data" name="user_id" value="222"/>
             <div class="ll-template-name-main">
                 <label class="ll-template-name-felid">
-                    <input class="ll_template_form_data" type="text" placeholder="Name" name="template_name"/>
+                    <input class="ll_template_form_data" type="text" autocomplete="off" placeholder="Name" name="template_name" required/>
                     <span class="ll-template-name-placeholder">Name</span>
                 </label>
                 <p class="ll-template-allowed-notification">Only alphabers, number and space is allowed</p>
@@ -12,7 +14,7 @@ const whatsapp_template = `
 
             <div class="ll-template-meassage-area">
                 <label class="ll-template-ui-form-input-container">
-                    <textarea class="ll-template-ui-form-input ll_template_form_data" name="template_text" id="ll_template_text" rows="6" cols="30" placeholder="SMS Message"></textarea>
+                    <textarea class="ll-template-ui-form-input ll_template_form_data" name="template_text" id="ll_template_text" rows="6" cols="30" placeholder="SMS Message" required></textarea>
                     <span class="ll-template-form-input-label">Message</span>
                 </label>
                 <p class="ll-template-allowed-notification">please fill out this field.</p>
@@ -53,7 +55,11 @@ function template_submit(){
     template_submit.onclick = function(e){
         e.preventDefault();
 
-        let error_show_div = document.getElementById('ll_whatsapp_template_error');
+        var validate_result = '';
+        var input_error = [];
+        var form_validate = new FormValidate();
+        
+        var error_show_div = document.getElementById('ll_whatsapp_template_error');
         error_show_div.innerHTML = '';
         error_show_div.removeAttribute('style');
 
@@ -61,9 +67,32 @@ function template_submit(){
 
         var formData = new FormData();
 
+        var input_error_index = 0; //If any of element is not empty then for loop index will not show correctly, due to here using this variable
+
         for(var i = 0; i < form_element.length; i++)
         {
+            if(form_element[i].hasAttribute('required')){ // input field if required
+                validate_result = form_validate.inputFieldValidate(form_element[i].name, form_element[i].value); //Form validation result
+                if(validate_result != ''){
+                    input_error[input_error_index] = validate_result;
+                    input_error_index++;
+                }
+            }
+
             formData.append(form_element[i].name, form_element[i].value);
+        }
+
+        if(input_error.length > 0){
+            error_show_div.innerHTML = input_error;
+
+            error_show_div.style.backgroundColor = 'red';
+            error_show_div.style.color = 'white';
+            error_show_div.style.marginTop = '10px';
+            error_show_div.style.padding = '10px';
+            error_show_div.style.fontSize = '14px';
+            error_show_div.style.fontFamily = 'Helvetica Neue",Helvetica,Arial,sans-serif !important';
+
+            return;
         }
 
         e.target.disabled = true;
@@ -105,7 +134,6 @@ function template_submit(){
                     }
 
                     if(error_show != ''){
-                        let error_show_div = document.getElementById('ll_whatsapp_template_error');
                         error_show_div.innerHTML = error_show;
 
                         error_show_div.style.backgroundColor = 'red';
