@@ -72,12 +72,11 @@ const whatsapp_form = `
 `;
 
 window.onload = (function() {
-    
+    createModal();
 });
 
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
-        createModal();
         createTemplate();
         closeModal();
     }
