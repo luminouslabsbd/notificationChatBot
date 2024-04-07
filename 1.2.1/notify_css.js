@@ -323,7 +323,7 @@ const styles = `
 
     .ll_notify_modal_body {
         padding: 2px 16px;
-        height: 86%;
+        height: 80%;
         overflow: auto;
     }
 
