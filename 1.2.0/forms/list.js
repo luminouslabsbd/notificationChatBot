@@ -1,6 +1,6 @@
 import {FormValidate} from "./form_validate.js";
-import {thankYouModal} from "../modals/modal.js";
-import {subscriber_form} from "./subscriber.js";
+import {showModal, thankYouModal} from "../modals/modal.js";
+import {subscriber_form, ll_notify_subscriber_submit} from "./subscriber.js";
 
 const list_form = `
     <form action="https://jsonplaceholder.typicode.com/posts" method="POST" id="ll_notify_list">
@@ -151,7 +151,6 @@ function ll_notify_list_submit(){
 function addSubscriber(){
     var ll_notify_sbscrb = window.document.getElementById('ll_notify_subscriber_add');
     var ll_notify_form = document.getElementById('ll_notify_list');
-    console.log(ll_notify_form);
 
     if (typeof(ll_notify_form) != 'undefined' && ll_notify_form != null){
         ll_notify_sbscrb.onclick = function(){
@@ -162,7 +161,7 @@ function addSubscriber(){
             showModal();
 
             /* During list create form bind to modal, list create related function will call here */
-            // ll_notify_list_submit();
+            ll_notify_subscriber_submit();
             /* During list create form bind to modal, list create related function will call here End*/
         }
     }
